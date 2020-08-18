@@ -1,0 +1,48 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+# Maven #
+target/
+# Eclipse
+.settings/
+.classpath
+.project
+# logs file
+logs/
+
+# VSCode
+.vscode
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/crm-common/src/main/resources/rebel.xml
+/crm-custom/crm-custom-api/src/main/resources/rebel.xml
+/crm-custom/crm-custom-impl/src/main/resources/rebel.xml
+/crm-eureka/src/main/resources/rebel.xml
+/crm-system/crm-system-api/src/main/resources/rebel.xml
+/crm-system/crm-system-impl/src/main/resources/rebel.xml
+/crm-xxl-job/crm-xxl-job-admin/src/main/resources/rebel.xml
+/crm-xxl-job/crm-xxl-job-executor/src/main/resources/rebel.xml
+/crm-zuul/src/main/resources/rebel.xml
+/crm-hystrix/src/main/resources/rebel.xml
