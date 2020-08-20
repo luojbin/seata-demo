@@ -63,6 +63,11 @@
       </if>
     </trim>
   </insert>
+  <update id="addMoney" parameterType="com.luojbin.seata.entity.BankOfChina">
+    update BANK_OF_CHINA
+    set money = money + #{money}
+    where id = #{accountId}
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.luojbin.seata.entity.BankOfChina">
     update BANK_OF_CHINA
     <set>
@@ -88,5 +93,10 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="minusMoney">
+    update BANK_OF_CHINA
+    set money = money - #{subMoney}
+    where id = #{fromId}
   </update>
 </mapper>

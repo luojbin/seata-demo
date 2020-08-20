@@ -1,6 +1,7 @@
 package com.luojbin.seata.at.ap2;
 
 import com.luojbin.seata.entity.ChinaGuangfaBank;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,6 +19,8 @@ public interface ChinaGuangfaBankDao {
     int updateByPrimaryKeySelective(ChinaGuangfaBank record);
 
     int updateByPrimaryKey(ChinaGuangfaBank record);
+
+    int addMoney(@Param("accountId") int accountId, @Param("addMoney") double addMoney);
 
     List<ChinaGuangfaBank> getList();
 }

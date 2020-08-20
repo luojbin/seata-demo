@@ -63,6 +63,11 @@
       </if>
     </trim>
   </insert>
+  <update id="addMoney" parameterType="com.luojbin.seata.entity.ChinaGuangfaBank">
+    update CHINA_GUANGFA_BANK
+    set money = money + #{addMoney}
+    where id = #{accountId}
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.luojbin.seata.entity.ChinaGuangfaBank">
     update CHINA_GUANGFA_BANK
     <set>

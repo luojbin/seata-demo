@@ -2,6 +2,7 @@ package com.luojbin.seata.at.ap1;
 
 
 import com.luojbin.seata.entity.BankOfChina;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,6 +20,10 @@ public interface BankOfChinaDao {
     int updateByPrimaryKeySelective(BankOfChina record);
 
     int updateByPrimaryKey(BankOfChina record);
+
+    int addMoney(@Param("accountId") int accountId, @Param("addMoney") double addMoney);
+
+    int minusMoney(@Param("fromId") int fromId, @Param("subMoney") double subMoney);
 
     List<BankOfChina> getList();
 }
