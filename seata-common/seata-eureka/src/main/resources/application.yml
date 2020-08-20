@@ -1,0 +1,16 @@
+server:
+  port: 7001
+# 服务名
+spring:
+  application:
+    name: seata-eureka
+# 注册中心
+eureka:
+  instance:
+    hostname: localhost # 实例名称
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    # 单节点, 不同步注册信息, 不向自身注册
+    fetch-registry: false
+    register-with-eureka: false
