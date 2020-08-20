@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="cacheEnabled"             value="true" />  <!-- 全局映射器启用缓存 -->
+        <setting name="logImpl"                  value="SLF4J" /> <!-- 指定 MyBatis 所用日志的具体实现 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <typeAlias alias="Integer" type="java.lang.Integer" />
+        <typeAlias alias="VARCHAR" type="java.lang.String" />
+        <typeAlias alias="Long" type="java.lang.Long" />
+        <typeAlias alias="HashMap" type="java.util.HashMap" />
+        <typeAlias alias="LinkedHashMap" type="java.util.LinkedHashMap" />
+        <typeAlias alias="ArrayList" type="java.util.ArrayList" />
+        <typeAlias alias="DECIMAL" type="java.math.BigDecimal" />
+    </typeAliases>
+<!--    -->
+<!--    <plugins>-->
+<!--        <plugin interceptor="com.vstecs.crm.custom.mapper.CompanyDataInterceptor">-->
+<!--            &lt;!&ndash;-->
+<!--            此处可以添加参数, 在 Interceptor.setProperties 方法中使用-->
+<!--            <property name="" value=""/>-->
+<!--            &ndash;&gt;-->
+<!--        </plugin>-->
+<!--    </plugins>-->
+</configuration>

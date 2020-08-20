@@ -1,0 +1,29 @@
+server:
+    port: 8002
+    max-http-header-size: 204800
+# 服务名
+spring:
+    application:
+        name: seata-at-ap2
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://my-server-mysql:8063/seata_demo_2?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowMultiQueries=true
+        username: luojbin
+        password: luojbin2@Dev
+        hikari:
+            maximum-pool-size: 100
+            minimum-idle: 10
+            #或者修改my.ini character_set_server=utf8mb4
+            connection-init-sql: set names utf8mb4
+mybatis:
+    configLocation: classpath:mybatis-config.xml
+    mapperLocations: classpath:*Dao.xml
+    typeAliasesPackage: com.luojbin.seata
+
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:7001/eureka/
+    instance:
+        prefer-ip-address: true
