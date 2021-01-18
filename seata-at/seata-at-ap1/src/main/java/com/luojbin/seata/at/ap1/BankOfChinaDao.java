@@ -5,6 +5,7 @@ import com.luojbin.seata.entity.BankOfChina;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -23,7 +24,7 @@ public interface BankOfChinaDao {
 
     int addMoney(@Param("accountId") int accountId, @Param("addMoney") double addMoney);
 
-    int minusMoney(@Param("fromId") int fromId, @Param("subMoney") double subMoney);
+    int minusMoney(@Param("fromId") int fromId, @Param("subMoney") BigDecimal subMoney);
 
     List<BankOfChina> getList();
 }

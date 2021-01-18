@@ -14,7 +14,6 @@
     <modules>
         <module>seata-at-ap1</module>
         <module>seata-at-ap2</module>
-        <module>seata-at-tm</module>
     </modules>
 
 </project>

@@ -25,6 +25,7 @@
         <spring.cloud.version>Finchley.RELEASE</spring.cloud.version>
         <mybatis.version>2.0.0</mybatis.version>
         <pagehelper.boot.version>1.2.5</pagehelper.boot.version>
+        <seata.version>1.3.0</seata.version>
     </properties>
 
 
@@ -53,6 +54,12 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>seata-entity</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

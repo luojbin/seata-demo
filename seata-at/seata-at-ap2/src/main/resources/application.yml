@@ -21,6 +21,17 @@ mybatis:
     mapperLocations: classpath:*Dao.xml
     typeAliasesPackage: com.luojbin.seata
 
+seata:
+    tx-service-group: my_test_tx_group
+    service:
+        grouplist:
+            default: localhost:8091
+
+logging:
+    level:
+        io.seata: info
+        io.seata.samples.account.persistence.AccountMapper: debug
+
 eureka:
     client:
         service-url:
