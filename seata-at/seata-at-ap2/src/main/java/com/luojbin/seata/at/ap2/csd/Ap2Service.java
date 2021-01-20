@@ -1,9 +1,8 @@
-package com.luojbin.seata.at.ap2;
+package com.luojbin.seata.at.ap2.csd;
 
 import com.luojbin.seata.entity.ChinaGuangfaBank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -13,7 +12,6 @@ public class Ap2Service {
     @Autowired
     private ChinaGuangfaBankDao dao;
 
-    @Transactional
     public String addMoney(int accountId, BigDecimal money) {
         ChinaGuangfaBank account = dao.selectByPrimaryKey(accountId);
         if (account == null) {

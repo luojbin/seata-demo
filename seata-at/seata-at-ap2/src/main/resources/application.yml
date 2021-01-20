@@ -17,8 +17,7 @@ spring:
             #或者修改my.ini character_set_server=utf8mb4
             connection-init-sql: set names utf8mb4
 mybatis:
-    configLocation: classpath:mybatis-config.xml
-    mapperLocations: classpath:*Dao.xml
+    mapperLocations: classpath:mapper/*.xml
     typeAliasesPackage: com.luojbin.seata
 
 seata:
@@ -35,6 +34,6 @@ logging:
 eureka:
     client:
         service-url:
-            defaultZone: http://localhost:7001/eureka/
+            defaultZone: http://localhost:8761/eureka/
     instance:
         prefer-ip-address: true

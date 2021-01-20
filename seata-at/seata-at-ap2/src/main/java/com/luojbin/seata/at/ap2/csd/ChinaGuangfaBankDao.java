@@ -1,4 +1,4 @@
-package com.luojbin.seata.at.ap2;
+package com.luojbin.seata.at.ap2.csd;
 
 import com.luojbin.seata.entity.ChinaGuangfaBank;
 import org.apache.ibatis.annotations.Param;

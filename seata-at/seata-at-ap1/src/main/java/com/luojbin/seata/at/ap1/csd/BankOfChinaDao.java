@@ -1,4 +1,4 @@
-package com.luojbin.seata.at.ap1;
+package com.luojbin.seata.at.ap1.csd;
 
 
 import com.luojbin.seata.entity.BankOfChina;

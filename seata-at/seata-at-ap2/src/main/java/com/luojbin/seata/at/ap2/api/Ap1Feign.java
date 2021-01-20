@@ -1,4 +1,4 @@
-package com.luojbin.seata.at.ap2;
+package com.luojbin.seata.at.ap2.api;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;

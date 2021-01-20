@@ -1,6 +1,8 @@
-package com.luojbin.seata.at.ap1;
+package com.luojbin.seata.at.ap1.csd;
 
+import com.luojbin.seata.at.ap1.api.Ap2Feign;
 import com.luojbin.seata.entity.BankOfChina;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +30,7 @@ public class Ap1Service {
         return "成功, 已存入" + money + "元";
     }
 
-    @Transactional
+    @GlobalTransactional
     public String transMoney(int fromId, int toId, double money) {
         BankOfChina account = dao.selectByPrimaryKey(fromId);
         if (account == null) {
