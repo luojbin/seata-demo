@@ -22,9 +22,6 @@ mybatis:
 
 seata:
     tx-service-group: my_test_tx_group
-    service:
-        grouplist:
-            default: localhost:8091
 
 logging:
     level:

@@ -21,10 +21,18 @@ mybatis:
     typeAliasesPackage: com.luojbin.seata
 
 seata:
+    application-id: ${spring.application.name}
     tx-service-group: my_test_tx_group
-    service:
-        grouplist:
-            default: localhost:8091
+    config:
+        type: file
+        file:
+            name: seata-file.conf
+    registry:
+        type: eureka
+        eureka:
+            service-url: ${eureka.client.service-url.defaultZone}
+            application: ${spring.application.name}
+            weight: 1
 
 logging:
     level:
