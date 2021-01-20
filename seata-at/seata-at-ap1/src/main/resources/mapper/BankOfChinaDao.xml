@@ -65,7 +65,7 @@
   </insert>
   <update id="addMoney" parameterType="com.luojbin.seata.entity.BankOfChina">
     update BANK_OF_CHINA
-    set money = money + #{money}
+    set money = money + #{addMoney}
     where id = #{accountId}
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.luojbin.seata.entity.BankOfChina">

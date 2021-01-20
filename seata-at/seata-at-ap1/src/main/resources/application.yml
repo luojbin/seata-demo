@@ -8,7 +8,7 @@ spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://my-server-mysql:8063/seata_demo_1?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowMultiQueries=true
+        url: jdbc:mysql://47.104.220.222:8063/seata_demo_1?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowMultiQueries=true
         username: luojbin
         password: luojbin2@Dev
         hikari:
@@ -36,4 +36,4 @@ eureka:
         service-url:
             defaultZone: http://localhost:8761/eureka/
     instance:
-        prefer-ip-address: true
+        prefer-ip-address: false

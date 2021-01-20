@@ -45,12 +45,7 @@ public class Ap1Service {
             return "失败, 没有更新任何记录";
         }
         String ap2Result;
-        try {
-            ap2Result = ap2Feign.addMoney(toId, bd);
-        } catch (Exception e) {
-            System.out.println("ap2 异常, ap1 正常提交事务");
-            ap2Result = "ap2 有毛病, 没收到钱";
-        }
+        ap2Result = ap2Feign.addMoney(toId, bd);
         return "成功, 已转出" + bd + ap2Result;
     }
 }
