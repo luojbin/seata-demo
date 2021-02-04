@@ -22,6 +22,15 @@ mybatis:
 
 seata:
     tx-service-group: my_test_tx_group
+    registry:
+        type: eureka
+        eureka:
+            service-url: ${eureka.client.service-url.defaultZone}
+            application: ${spring.application.name}
+            weight: 1
+    service:
+        vgroup-mapping:
+            my_test_tx_group: seata-server
 
 logging:
     level:

@@ -21,23 +21,20 @@ mybatis:
     typeAliasesPackage: com.luojbin.seata
 
 seata:
-    application-id: ${spring.application.name}
     tx-service-group: my_test_tx_group
-    config:
-        type: file
-        file:
-            name: seata-file.conf
     registry:
         type: eureka
         eureka:
             service-url: ${eureka.client.service-url.defaultZone}
             application: ${spring.application.name}
             weight: 1
+    service:
+        vgroup-mapping:
+            my_test_tx_group: seata-server
 
 logging:
     level:
-        io.seata: info
-        io.seata.samples.account.persistence.AccountMapper: debug
+        io.seata: debug
 
 eureka:
     client:

@@ -27,6 +27,9 @@ public class Ap1Service {
         if (result != 1) {
             return "失败, 没有更新任何记录";
         }
+        if (money.equals(new BigDecimal("123"))) {
+            throw new RuntimeException("测试回滚");
+        }
         return "成功, 已存入" + money + "元";
     }
 
