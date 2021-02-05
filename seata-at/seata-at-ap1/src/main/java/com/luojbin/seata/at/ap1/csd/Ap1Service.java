@@ -2,12 +2,15 @@ package com.luojbin.seata.at.ap1.csd;
 
 import com.luojbin.seata.at.ap1.api.Ap2Feign;
 import com.luojbin.seata.entity.BankOfChina;
+import io.seata.spring.annotation.GlobalLock;
 import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class Ap1Service {
@@ -66,9 +69,82 @@ public class Ap1Service {
     public String backupGlobal(int rollback) {
         dao.dumpData();
         String result2 = ap2Feign.backup(rollback);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         if (rollback == 1) {
             throw new RuntimeException("测试回滚");
         }
         return "ap1操作成功, " + result2;
     }
+
+    @GlobalLock(lockRetryInternal = 1000, lockRetryTimes = 15)
+    @Transactional
+    public String bakCount() {
+        int count = dao.getBakCount();
+        return "bak表计数: " + count;
+    }
+
+    // region 读隔离测试
+    // tx1, 插入数据, sleep 10s
+
+    @GlobalTransactional
+    public String readLockInsert(int rollback) {
+        BankOfChina bank = new BankOfChina();
+        bank.setName("古中医");
+        bank.setMoney(BigDecimal.valueOf(rollback));
+        bank.setCreateTime(new Date());
+        bank.setUpdateTime(new Date());
+        int id = dao.insert(bank);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (rollback == 69) {
+            throw new RuntimeException("插入回滚");
+        }
+        return "插入成功, id= " + id;
+    }
+
+    // tx2, 查询全表计数, count, 能否查到insert的数据?
+    @GlobalLock(lockRetryInternal = 1000, lockRetryTimes = 15)
+    @Transactional
+    public String readLockCount() {
+        int count = dao.readLockCount();
+        return "tx2, 查询全表计数" + count;
+    }
+
+    // tx3, 查询 where id > n(含新增的数据), 能否查到 insert 的数据?
+    @GlobalLock(lockRetryInternal = 1000, lockRetryTimes = 15)
+    @Transactional
+    public String readLockIdGt() {
+        int count = dao.readLockIdGt();
+        return "tx2, 查询全表计数" + count;
+    }
+    // tx4, 查询 where id < n(不含新数据), 会不会被阻塞?
+    @GlobalLock(lockRetryInternal = 1000, lockRetryTimes = 15)
+    @Transactional
+    public String readLockIdLt() {
+        int count = dao.readLockIdLt();
+        return "tx2, 查询全表计数" + count;
+    }
+    // tx5, 查询 where money > x(无索引, 含新增数据), 能否查到 insert 的数据?
+    @GlobalLock(lockRetryInternal = 1000, lockRetryTimes = 15)
+    @Transactional
+    public String readLockMoneyGt() {
+        int count = dao.readLockMoneyGt();
+        return "tx5, 查询 where money > x, " + count;
+    }
+
+    // tx6, 查询 where money = x(无索引, 不含新增数据), 会不会被阻塞?
+    @GlobalLock(lockRetryInternal = 1000, lockRetryTimes = 15)
+    @Transactional
+    public String readLockMoneyEq() {
+        List<BankOfChina> list = dao.readLockMoneyEq();
+        return "tx6, 查询 where money = x, " + list.size();
+    }
+    //endregion
 }

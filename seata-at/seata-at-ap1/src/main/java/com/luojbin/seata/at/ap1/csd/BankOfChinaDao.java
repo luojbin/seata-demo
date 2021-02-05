@@ -28,5 +28,7 @@ public interface BankOfChinaDao {
 
     int dumpData();
 
+    int getBakCount();
+
     List<BankOfChina> getList();
 }
