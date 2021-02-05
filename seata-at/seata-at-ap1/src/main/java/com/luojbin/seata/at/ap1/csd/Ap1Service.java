@@ -17,7 +17,7 @@ public class Ap1Service {
     @Autowired
     private BankOfChinaDao dao;
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public String addMoney(int accountId, BigDecimal money) {
         BankOfChina account = dao.selectByPrimaryKey(accountId);
         if (account == null) {
@@ -50,5 +50,25 @@ public class Ap1Service {
         String ap2Result;
         ap2Result = ap2Feign.addMoney(toId, bd);
         return "成功, 已转出" + bd + ap2Result;
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public String backup(int rollback) {
+        dao.dumpData();
+
+        if (rollback == 1) {
+            throw new RuntimeException("测试回滚");
+        }
+        return "操作成功";
+    }
+
+    @GlobalTransactional
+    public String backupGlobal(int rollback) {
+        dao.dumpData();
+        String result2 = ap2Feign.backup(rollback);
+        if (rollback == 1) {
+            throw new RuntimeException("测试回滚");
+        }
+        return "ap1操作成功, " + result2;
     }
 }

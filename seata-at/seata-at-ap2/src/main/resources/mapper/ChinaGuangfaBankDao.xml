@@ -94,4 +94,8 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <insert id="dumpData">
+    insert into BANK_BAK (name, money, create_time, update_time)  select name, #{money}, create_time, update_time from CHINA_GUANGFA_BANK
+  </insert>
 </mapper>

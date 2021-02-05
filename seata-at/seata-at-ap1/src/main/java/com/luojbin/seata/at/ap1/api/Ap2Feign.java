@@ -13,5 +13,8 @@ public interface Ap2Feign {
     @PostMapping("/ap2/addMoney")
     String addMoney(@RequestParam("accountId") int accountId, @RequestParam("money") BigDecimal money) ;
 
+    @PostMapping("/ap2/backup")
+    String backup(@RequestParam("rollback") int rollback) ;
+
 
 }

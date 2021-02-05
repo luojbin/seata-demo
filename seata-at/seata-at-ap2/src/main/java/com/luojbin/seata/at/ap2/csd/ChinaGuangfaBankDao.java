@@ -22,5 +22,7 @@ public interface ChinaGuangfaBankDao {
 
     int addMoney(@Param("accountId") int accountId, @Param("addMoney") double addMoney);
 
+    void dumpData(@Param("money") int money);
+
     List<ChinaGuangfaBank> getList();
 }

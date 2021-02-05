@@ -18,4 +18,9 @@ public class Controller {
     public String addMoney(int accountId, BigDecimal money) {
         return ap2Service.addMoney(accountId, money);
     }
+
+    @PostMapping("backup")
+    public String backup(int rollback) {
+        return ap2Service.backup(rollback);
+    }
 }

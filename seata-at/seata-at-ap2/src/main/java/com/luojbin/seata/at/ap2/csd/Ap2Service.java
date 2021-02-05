@@ -26,4 +26,9 @@ public class Ap2Service {
         }
         return "成功, 已存入" + money + "元";
     }
+
+    public String backup(int rollback) {
+        dao.dumpData(rollback);
+        return null;
+    }
 }

@@ -20,6 +20,15 @@ public class Controller {
         return ap1Service.addMoney(accountId, money);
     }
 
+    @PostMapping("backup")
+    public String backup(int rollback) {
+        return ap1Service.backup(rollback);
+    }
+    @PostMapping("backupGlobal")
+    public String backupGlobal(int rollback) {
+        return ap1Service.backupGlobal(rollback);
+    }
+
     @PostMapping("transMoney")
     @GlobalTransactional
     public String transMoney(int fromId, int toId, double money) {

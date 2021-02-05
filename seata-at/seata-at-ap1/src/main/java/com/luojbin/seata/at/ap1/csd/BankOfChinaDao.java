@@ -26,5 +26,7 @@ public interface BankOfChinaDao {
 
     int minusMoney(@Param("fromId") int fromId, @Param("subMoney") BigDecimal subMoney);
 
+    int dumpData();
+
     List<BankOfChina> getList();
 }
